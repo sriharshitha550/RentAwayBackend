@@ -1,0 +1,63 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+POST /users               controllers.UserController.registerUser()
+GET  /users/me            controllers.UserController.getCurrentUser()
+PUT /users/signin         controllers.UserController.signInUser()
+PUT /users/signout        controllers.UserController.signOutUser()
+PUT /users/update         controllers.UserController.updateUser()
+PUT /users/pending/:id    controllers.UserController.changePendingStatus(id :Integer)
+
+POST /images                controllers.ImagesController.uploadImage()
+GET /images/:id           controllers.ImagesController.downloadImage(id: String)
+DELETE /images/:id         controllers.ImagesController.deleteImage(id: String)
+GET /images/home/:id        controllers.ImagesController.getImagesByHomeId(id: Integer)
+
+POST /booking               controllers.BookingController.createBooking()
+GET  /bookingsByHome/:id    controllers.BookingController.getDatesByHomeId(id: Integer)
+GET  /bookingsCountByHome/:id    controllers.BookingController.getBookingsCountByHomeId(id: Integer)
+GET  /bookingsByUser/:id        controllers.BookingController.getHomeDetailsByUserId(id: Integer)
+DELETE  /bookingByBookingId/:id     controllers.BookingController.bookingDeletionById(id: Integer)
+
+
+POST /rating               controllers.RatingController.createRating()
+GET  /ratingsByHome/:id    controllers.RatingController.getAvgRatingsByHome(id: Integer)
+
+
+
+
+POST /homes                              controllers.HomeController.createHome()
+
+GET  /homes/:id                          controllers.HomeController.getHomeByHomeId(id: Integer)
+GET  /approved                           controllers.HomeController.getApprovedListofUsers()
+GET  /pendingListings                    controllers.HomeController.getPendingListings()
+GET  /pendingUsers                       controllers.HomeController.getPendingListofUsers()
+POST /homelist                           controllers.HomeController.getHomeByUsername()
+PUT /homes/pending/:id                   controllers.HomeController.changePendingStatus(id :Integer)
+
+
+GET  /reported                           controllers.HomeController.getreportedListofUsers()
+POST  /homes1                            controllers.HomeController.filters()
+POST  /homesearch                        controllers.HomeController.homesearch()
+
+DELETE  /homes/admin/:id                controllers.HomeController.requestedHomeDeletionByAdmin(id: Integer)
+DELETE /homes/report/:id                controllers.HomeController.reportedHomeDeletionByAdmin(id: Integer)
+DELETE  /homes/users/:id                controllers.HomeController.homeDeletionByUser(id: Integer)
+
+
+PUT  /homes/pending/:id                 controllers.HomeController.changePendingStatus(id :Integer)
+PUT  /homes/report/:id                  controllers.HomeController.reportHome(id :Integer)
+PUT  /homes/deleterequest/:id           controllers.HomeController.changeDeleteRequestStatus(id: Integer)
+
+
+
+
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
